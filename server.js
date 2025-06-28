@@ -11,6 +11,14 @@ const LEADERBOARD_FILE = path.join(__dirname, 'leaderboard.json');
 app.use(cors());
 app.use(express.json());
 
+// Serve static files (frontend)
+app.use(express.static(path.join(__dirname, '/')));
+
+// Fallback: serve index.html for any other route (for SPA or direct root access)
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 // Initialize leaderboard file if it doesn't exist
 async function initializeLeaderboard() {
   try {
