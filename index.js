@@ -135,6 +135,7 @@ function loadMotScreen() {
   mot.querySelector('#leaderboard').addEventListener('click', loadLeaderboardScreen);
   mot.querySelector('#history').addEventListener('click', loadHistoryScreen);
   mot.querySelector('#newGame').addEventListener('click', newGame);
+  mot.querySelector('#playButton').addEventListener('click', newGame);
   
   // Only add continue game listener if save exists
   if (hasSave) {
