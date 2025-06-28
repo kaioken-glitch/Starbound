@@ -1644,7 +1644,7 @@ function loadLeaderboardScreen() {
 
   // Fetch and display leaderboard data from API
   function fetchAndDisplayLeaderboard() {
-    fetch('http://localhost:3001/api/leaderboard')
+    fetch('https://starbound-production.up.railway.app/api/leaderboard')
       .then(res => res.json())
       .then(result => {
         const tbody = document.querySelector('#leaderboardTable tbody');
