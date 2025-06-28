@@ -52,27 +52,27 @@ function loadMotScreen() {
   
   // Apply saved audio settings
   const musicOptions = [
-    "/assets/audio/EnterInTheSkies.mp3",
+    "/assets/audio/Enterin The Skies.mp3",
     "/assets/audio/exploring.mp3",
     "/assets/audio/ObservingTheStar.ogg",
     "/assets/audio/Ove Melaa - Approaching The Green Grass.ogg",
-    "/assets/audio/Ove Melaa - BellHill.ogg",
+    "/assets/audio/Ove Melaa - BellHell.ogg",
     "/assets/audio/Ove Melaa - Dark Blue.ogg",
     "/assets/audio/Ove Melaa - Dead, Buried and Cold(Ambient Pad).ogg",
-    "/assets/audio/Ove Melaa - Deader + bigger.ogg",
+    "/assets/audio/Ove Melaa - Deader = Better.ogg",
     "/assets/audio/Ove Melaa - Flew.mp3",
-    "/assets/audio/Ove Melaa - Gloomy.ogg",
+    "/assets/audio/Ove Melaa - Gloomey.ogg",
     "/assets/audio/Ove Melaa - GOAT.ogg",
     "/assets/audio/Ove Melaa - Hero Within.mp3",
     "/assets/audio/Ove Melaa - High Stakes,Low Chances.mp3",
     "/assets/audio/Ove Melaa - I have just been eaten.ogg",
     "/assets/audio/Ove Melaa - Infection By Chewing.ogg",
-    "/assets/audio/Ove Melaa - ItaloCoolDipKkio.ogg",
-    "/assets/audio/Ove Melaa - They Came By Boatoogg",
+    "/assets/audio/Ove Melaa - ItaloLoopDikkoDikko.ogg",
+    "/assets/audio/Ove Melaa - They Came By Boat.ogg",
     "/assets/audio/Ove Melaa - ZombieAmbient.ogg",
-    "/assets/audio/fluffedPump.mp3",
-    "/assets/audio/spacefileNo14.ogg",
-    "/assets/audio/starting_of_the_universe.mp3",
+    "/assets/audio/Puffed Up.mp3.mp3",
+    "/assets/audio/spacelifeNo14.ogg",
+    "/assets/audio/starting_of_the_universes.mp3",
     "/assets/audio/the_magnificent_cosmos.mp3",
     "/assets/audio/travel_through_stars.mp3"
   ];
@@ -1714,29 +1714,29 @@ function loadSettingsScreen() {
     <div class="setting-item">
       <label for="musicTrack">Music Track:</label>
       <select id="musicTrack">
-        <option value="theme1" data-src="/assets/audio/EnterInTheSkies.mp3">Enter in the Skies</option>
+        <option value="theme1" data-src="/assets/audio/Enterin The Skies.mp3">Enterin The Skies</option>
         <option value="theme2" data-src="/assets/audio/exploring.mp3">Exploring</option>
-        <option value="theme3" data-src="/assets/audio/ObservingTheStar.ogg">Observing the Star</option>
-        <option value="theme4" data-src="/assets/audio/Ove Melaa - Approaching The Green Grass.ogg">Approaching the Green Grass</option>
-        <option value="theme5" data-src="/assets/audio/Ove Melaa - BellHill.ogg">BellHill</option>
-        <option value="theme6" data-src="/assets/audio/Ove Melaa - Dark Blue.ogg">Dark Blue</option>
-        <option value="theme7" data-src="/assets/audio/Ove Melaa - Dead, Buried and Cold(Ambient Pad).ogg">Dead, Buried and Cold</option>
-        <option value="theme8" data-src="/assets/audio/Ove Melaa - Deader + bigger.ogg">Deader + Bigger</option>
-        <option value="theme9" data-src="/assets/audio/Ove Melaa - Flew.mp3">Flew</option>
-        <option value="theme10" data-src="/assets/audio/Ove Melaa - Gloomy.ogg">Gloomy</option>
-        <option value="theme11" data-src="/assets/audio/Ove Melaa - GOAT.ogg">GOAT</option>
-        <option value="theme12" data-src="/assets/audio/Ove Melaa - Hero Within.mp3">Hero Within</option>
-        <option value="theme13" data-src="/assets/audio/Ove Melaa - High Stakes,Low Chances.mp3">High Stakes, Low Chances</option>
-        <option value="theme14" data-src="/assets/audio/Ove Melaa - I have just been eaten.ogg">I Have Just Been Eaten</option>
-        <option value="theme15" data-src="/assets/audio/Ove Melaa - Infection By Chewing.ogg">Infection By Chewing</option>
-        <option value="theme16" data-src="/assets/audio/Ove Melaa - ItaloCoolDipKkio.ogg">ItaloCoolDipKkio</option>
-        <option value="theme17" data-src="/assets/audio/Ove Melaa - They Came By Boatoogg">They Came by Boat</option>
-        <option value="theme18" data-src="/assets/audio/Ove Melaa - ZombieAmbient.ogg">Zombie Ambient</option>
-        <option value="theme19" data-src="/assets/audio/fluffedPump.mp3">Fluffed Pump</option>
-        <option value="theme20" data-src="/assets/audio/spacefileNo14.ogg">Space File No14</option>
-        <option value="theme21" data-src="/assets/audio/starting_of_the_universe.mp3">Starting of the Universe</option>
-        <option value="theme22" data-src="/assets/audio/the_magnificent_cosmos.mp3">The Magnificent Cosmos</option>
-        <option value="theme23" data-src="/assets/audio/travel_through_stars.mp3">Travel Through Stars</option>
+        <option value="theme3" data-src="/assets/audio/ObservingTheStar.ogg">ObservingTheStar</option>
+        <option value="theme4" data-src="/assets/audio/Ove Melaa - Approaching The Green Grass.ogg">Ove Melaa - Approaching The Green Grass</option>
+        <option value="theme5" data-src="/assets/audio/Ove Melaa - BellHell.ogg">Ove Melaa - BellHell</option>
+        <option value="theme6" data-src="/assets/audio/Ove Melaa - Dark Blue.ogg">Ove Melaa - Dark Blue</option>
+        <option value="theme7" data-src="/assets/audio/Ove Melaa - Dead, Buried and Cold(Ambient Pad).ogg">Ove Melaa - Dead, Buried and Cold (Ambient Pad)</option>
+        <option value="theme8" data-src="/assets/audio/Ove Melaa - Deader = Better.ogg">Ove Melaa - Deader = Better</option>
+        <option value="theme9" data-src="/assets/audio/Ove Melaa - Flew.mp3">Ove Melaa - Flew</option>
+        <option value="theme10" data-src="/assets/audio/Ove Melaa - Gloomey.ogg">Ove Melaa - Gloomey</option>
+        <option value="theme11" data-src="/assets/audio/Ove Melaa - GOAT.ogg">Ove Melaa - GOAT</option>
+        <option value="theme12" data-src="/assets/audio/Ove Melaa - Hero Within.mp3">Ove Melaa - Hero Within</option>
+        <option value="theme13" data-src="/assets/audio/Ove Melaa - High Stakes,Low Chances.mp3">Ove Melaa - High Stakes,Low Chances</option>
+        <option value="theme14" data-src="/assets/audio/Ove Melaa - I have just been eaten.ogg">Ove Melaa - I have just been eaten</option>
+        <option value="theme15" data-src="/assets/audio/Ove Melaa - Infection By Chewing.ogg">Ove Melaa - Infection By Chewing</option>
+        <option value="theme16" data-src="/assets/audio/Ove Melaa - ItaloLoopDikkoDikko.ogg">Ove Melaa - ItaloLoopDikkoDikko</option>
+        <option value="theme17" data-src="/assets/audio/Ove Melaa - They Came By Boat.ogg">Ove Melaa - They Came By Boat</option>
+        <option value="theme18" data-src="/assets/audio/Ove Melaa - ZombieAmbient.ogg">Ove Melaa - ZombieAmbient</option>
+        <option value="theme19" data-src="/assets/audio/Puffed Up.mp3.mp3">Puffed Up</option>
+        <option value="theme20" data-src="/assets/audio/spacelifeNo14.ogg">spacelifeNo14</option>
+        <option value="theme21" data-src="/assets/audio/starting_of_the_universes.mp3">starting_of_the_universes</option>
+        <option value="theme22" data-src="/assets/audio/the_magnificent_cosmos.mp3">the_magnificent_cosmos</option>
+        <option value="theme23" data-src="/assets/audio/travel_through_stars.mp3">travel_through_stars</option>
       </select>
     </div>
   </section>
