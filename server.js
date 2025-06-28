@@ -13,6 +13,7 @@ app.use(express.json());
 
 // Serve static files (frontend)
 app.use(express.static(path.join(__dirname, '/')));
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 // Fallback: serve index.html for any other route (for SPA or direct root access)
 app.get('/', (req, res) => {
