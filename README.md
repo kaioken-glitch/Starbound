@@ -67,7 +67,9 @@
 
 ## 🖼️ Preview
 
-![Game Screenshot](path/to/your/screenshot.png)
+![Game Screenshot](./assets/images/menu.png)
+![Game Screenshot](./assets/images/leaderboard.png)
+![Game Screenshot](./assets/images/score.png)
 
 *Replace the above path with your own screenshot image.*
 
