@@ -1602,7 +1602,7 @@ function displayColonyResult(score) {
   }
 }
 
-function loadLeaderboardScreen(){
+function loadLeaderboardScreen() {
   main.innerHTML = '';
   const leaderboard = document.createElement('div');
   leaderboard.className = 'leaderboard';
@@ -1636,9 +1636,41 @@ function loadLeaderboardScreen(){
   `;
   main.appendChild(leaderboard);
 
-  // 🔙 Back button
+  // Fetch and display leaderboard data from API
+  function fetchAndDisplayLeaderboard() {
+    fetch('http://localhost:3001/api/leaderboard')
+      .then(res => res.json())
+      .then(result => {
+        const tbody = document.querySelector('#leaderboardTable tbody');
+        if (result.success && Array.isArray(result.data)) {
+          tbody.innerHTML = result.data.map((entry, i) => `
+            <tr>
+              <td class="rank">${i + 1}</td>
+              <td class="player-name">${entry.name}</td>
+              <td class="score">${entry.score.toLocaleString()}</td>
+              <td class="date">${new Date(entry.date).toLocaleString()}</td>
+            </tr>
+          `).join('');
+        } else {
+          tbody.innerHTML = '<tr><td colspan="4">No scores yet.</td></tr>';
+        }
+      })
+      .catch(() => {
+        const tbody = document.querySelector('#leaderboardTable tbody');
+        tbody.innerHTML = '<tr><td colspan="4">Failed to load leaderboard.</td></tr>';
+      });
+  }
+
+  // Initial load
+  fetchAndDisplayLeaderboard();
+
+  // Refresh button
+  document.getElementById('refreshLeaderboard').addEventListener('click', fetchAndDisplayLeaderboard);
+
+  // Back button
   document.getElementById('backToMot').addEventListener('click', loadMotScreen);
 }
+
 
 function loadSettingsScreen() {
   main.innerHTML = '';
