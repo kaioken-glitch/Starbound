@@ -1,0 +1,45 @@
+# Ignore node modules and logs
+node_modules/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore environment and config
+.env
+.env.*
+
+# Ignore build and cache
+/dist/
+/build/
+.cache/
+
+# Ignore VSCode and editor settings
+.vscode/
+*.code-workspace
+
+# Ignore system files
+*.swp
+*.swo
+
+# Ignore audio/video/image raw assets (if not needed in repo)
+assets/audio/*.mp3
+assets/audio/*.ogg
+assets/audio/*.wav
+assets/images/*.mp4
+
+# Ignore personal files
+*.bak
+*.tmp
+
+# Ignore leaderboard and history data
+leaderboard.json
+history.json
+
+# Ignore other possible temp files
+*.tmp
+*.temp
