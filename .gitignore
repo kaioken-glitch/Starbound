@@ -26,12 +26,6 @@ Thumbs.db
 *.swp
 *.swo
 
-# Ignore audio/video/image raw assets (if not needed in repo)
-assets/audio/*.mp3
-assets/audio/*.ogg
-assets/audio/*.wav
-assets/images/*.mp4
-
 # Ignore personal files
 *.bak
 *.tmp
