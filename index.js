@@ -860,6 +860,8 @@ function foundColony() {
     // Add to game history
     addToGameHistory(score, 'Guardian AI');
   }, 3000);
+
+  autoSaveGame(); // Auto-save after founding colony
 }
 
 // Move on to next planet
@@ -878,6 +880,8 @@ function moveOn() {
       arriveAtNewSystem();
     }
   }, 2000);
+
+  autoSaveGame();
 }
 
 // Present random events during travel
@@ -1446,6 +1450,8 @@ function presentRandomEvent() {
       arriveAtNewSystem();
     }, 4000);
   }
+
+  autoSaveGame();
 }
 
 // Helper functions
@@ -2069,6 +2075,7 @@ function loadGame(slotNumber = 1) {
     gameState = parsedData.gameState;
     
     console.log(`Game loaded from slot ${slotNumber}`);
+    autoSaveGame(slotNumber);
     return true;
   } catch (error) {
     console.error('Error loading game:', error);
@@ -2084,6 +2091,7 @@ function hasSavedGame() {
     }
   }
   return false;
+
 }
 
 // Get all save slots with their data
@@ -2478,6 +2486,8 @@ function addToGameHistory(score, playerName = 'Player') {
   } catch (error) {
     console.error('❌ Error saving game history:', error);
   }
+
+  autoSaveGame();
 }
 
 /**
@@ -2772,3 +2782,15 @@ document.addEventListener('DOMContentLoaded', () => {
   applySettings(savedSettings);
 });
 
+function autoSaveGame() {
+  try {
+    const saveData = {
+      gameState: { ...gameState },
+      timestamp: new Date().toISOString(),
+      saveVersion: '1.0'
+    };
+    localStorage.setItem('starbound_save_game', JSON.stringify(saveData));
+  } catch (error) {
+    console.error('Auto-save failed:', error);
+  }
+}
