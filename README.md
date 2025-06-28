@@ -11,7 +11,7 @@
 
 > **A narrative-driven space exploration and colony simulation game.**
 > 
-> _A tribute to the classic [Seedship](https://www.seedshipgame.com/) by John Ayliff._
+> _A tribute to the classic [Seedship](https://johnayliff.itch.io/seedship) by John Ayliff._
 
 ---
 
