@@ -8,8 +8,8 @@ const app = express();
 const PORT = 3001;
 
 // MongoDB connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/starbound_leaderboard';
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+const MONGODB_URI = process.env.MONGODB_URI;
+mongoose.connect(MONGODB_URI)
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
@@ -22,10 +22,18 @@ const leaderboardSchema = new mongoose.Schema({
 const LeaderboardEntry = mongoose.model('LeaderboardEntry', leaderboardSchema);
 
 // Redis connection
-const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379';
-const redisClient = Redis.createClient({ url: REDIS_URL });
-redisClient.connect().then(() => console.log('Connected to Redis')).catch((err) => console.error('Redis connection error:', err));
-
+const REDIS_URL = process.env.REDIS_URL;
+let redisClient;
+(async () => {
+  try {
+    redisClient = Redis.createClient({ url: REDIS_URL });
+    await redisClient.connect();
+    console.log('Connected to Redis');
+  } catch (err) {
+    console.error('Redis connection error:', err);
+    redisClient = null; // fallback if Redis is not available
+  }
+})();
 const LEADERBOARD_CACHE_KEY = 'starbound:leaderboard:top10';
 
 // Helper: get top 10 from DB
@@ -55,14 +63,16 @@ app.get('/', (req, res) => {
 // GET /api/leaderboard - Get all leaderboard entries (with Redis cache)
 app.get('/api/leaderboard', async (req, res) => {
   try {
-    // Try Redis cache first
-    const cached = await redisClient.get(LEADERBOARD_CACHE_KEY);
-    if (cached) {
-      return res.json({ success: true, data: JSON.parse(cached) });
+    if (redisClient) {
+      const cached = await redisClient.get(LEADERBOARD_CACHE_KEY);
+      if (cached) {
+        return res.json({ success: true, data: JSON.parse(cached) });
+      }
     }
-    // Fallback to DB
     const leaderboard = await getTopLeaderboard();
-    await redisClient.set(LEADERBOARD_CACHE_KEY, JSON.stringify(leaderboard), { EX: 60 }); // cache for 60s
+    if (redisClient) {
+      await redisClient.set(LEADERBOARD_CACHE_KEY, JSON.stringify(leaderboard), { EX: 60 });
+    }
     res.json({ success: true, data: leaderboard });
   } catch (error) {
     res.status(500).json({ success: false, error: 'Failed to fetch leaderboard' });
@@ -80,9 +90,7 @@ app.post('/api/leaderboard', async (req, res) => {
       return res.status(400).json({ success: false, error: 'Score is required and must be a positive number' });
     }
     const newEntry = await LeaderboardEntry.create({ name: name.trim(), score, date: new Date() });
-    // Invalidate cache
-    await redisClient.del(LEADERBOARD_CACHE_KEY);
-    // Get new rank
+    if (redisClient) await redisClient.del(LEADERBOARD_CACHE_KEY);
     const leaderboard = await getTopLeaderboard();
     const rank = leaderboard.findIndex(entry => entry._id.toString() === newEntry._id.toString()) + 1;
     res.json({ success: true, message: 'Score added successfully', data: newEntry, rank });
@@ -95,7 +103,7 @@ app.post('/api/leaderboard', async (req, res) => {
 app.delete('/api/leaderboard', async (req, res) => {
   try {
     await LeaderboardEntry.deleteMany({});
-    await redisClient.del(LEADERBOARD_CACHE_KEY);
+    if (redisClient) await redisClient.del(LEADERBOARD_CACHE_KEY);
     res.json({ success: true, message: 'Leaderboard cleared successfully' });
   } catch (error) {
     res.status(500).json({ success: false, error: 'Failed to clear leaderboard' });
