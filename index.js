@@ -373,10 +373,13 @@ function addTerminalLine(text) {
   line.textContent = text;
   terminalOutput.appendChild(line);
   
-  // Auto-scroll to bottom
-  const terminalContainer = document.querySelector('.terminal-container');
-  if (terminalContainer) {
-    terminalContainer.scrollTop = terminalContainer.scrollHeight;
+  scrollTerminalToBottom();
+}
+
+function scrollTerminalToBottom() {
+  const terminalOutput = document.getElementById('terminalOutput');
+  if (terminalOutput) {
+    terminalOutput.scrollTop = terminalOutput.scrollHeight;
   }
 }
 
