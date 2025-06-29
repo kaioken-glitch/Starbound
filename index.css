@@ -547,6 +547,7 @@ button:active {
     color: white;
     flex-shrink: 0;
     color: #0ff;
+    margin: 0 auto;
     align-items: center;
     flex-direction: row;
     justify-content: flex-start;
