@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Redis = require('redis');
+const dotenv = require('dotenv').config();
 const path = require('path');
 const cors = require('cors');
 
